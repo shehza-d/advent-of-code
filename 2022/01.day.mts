@@ -1,23 +1,17 @@
 // https://adventofcode.com/2022/day/1
 
-// import { readFile } from "node:fs";
-
-// readFile("./input.txt", "utf8", (err, data) => {
-//   if (err) {
-//     console.error(err);
-//     return;
-//   }
-//   const ans = Array.from(data).map(x=>Number(x))
-
-//   console.log("ans", ans);
-// });
+import fs from "node:fs";
 
 const path = "./input.txt";
-const file = Bun.file(path);
 
-const text = await file.text();
+// Node
+const data = fs.readFileSync(path, "utf8");
 
-const groups = text.split("\n\n");
+// Bun
+// const file = Bun.file(path);
+// const data = await file.text();
+
+const groups = data.split("\n\n");
 
 const a = groups.map((group) => group.split("\n"));
 
