@@ -8,7 +8,7 @@ const path = "./input.txt";
 const data = fs.readFileSync(path, "utf8");
 
 // Bun
-// const file = Bun.file(path);
+const file = Bun.file(path);
 // const data = await file.text();
 
 const groups = data.split("\n\n");
