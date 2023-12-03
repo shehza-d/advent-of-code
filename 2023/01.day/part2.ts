@@ -2,20 +2,20 @@ const path = "./input.txt";
 
 // Bun
 const file = Bun.file(path);
-let data = await file.text();
+// let data = await file.text();
 
 // solution start
-// let data = `two1nine
-// eightwothree
-// abcone2threexyz
-// xtwone3four
-// 4nineeightseven2
-// zoneight234
-// 7pqrstsixteen
-// `;
+let data = `two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen
+`;
 
 const numbersMap: any = {
-//   zero: "0",
+  //   zero: "0",
   one: "1",
   two: "2",
   three: "3",
@@ -33,19 +33,16 @@ const words = data.split("\n");
 let result = 0;
 
 for (let i = 0; i < words.length - 1; i++) {
-  const wordWithNums = words[i].replaceAll(
-    regx,
-    (matched) => numbersMap[matched]
-  );
+  // zoneight234 ==>> z1ight234
+  const wordWithNums = words[i].replaceAll(regx, (match) => numbersMap[match]);
 
+  // Removed all chars z1ight234 ==>> 1234
   const numbers = wordWithNums.match(r)?.join("") || "";
 
   const firstDigit = numbers[0];
   const lastDigit = numbers[numbers?.length - 1];
 
-  console.log("🚀", `${firstDigit}${lastDigit}`);
-
-  result += +`${firstDigit}${lastDigit}`;
+  result += Number(`${firstDigit}${lastDigit}`);
 }
 
 console.log("🚀 ~ file: part1.ts:6 ~ data:", result);
